@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hola cara de bola</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
     <script>
         
         function takePhoto(){
@@ -28,11 +30,52 @@
 
         
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Camera Stream</h1>
-    <button onclick="takePhoto()">Take Photo and Send Email</button>
-    <p id="status"></p> <!-- Status message element -->
-    <button onclick="test()">Test</button>
+    <header>
+        <h2>Header Section</h2>
+    </header>
+    <h1>Test Title</h1>
+    <div class="button-container">
+        <button onclick="alert('Button clicked!')">Click Me</button>
+        <button onclick="takePhoto()">Take Photo and Send Email</button>
+        <p id="status"></p> <!-- Status message element -->
+        <button onclick="test()">Test</button>
+    </div>
 </body>
 </html>
