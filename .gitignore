@@ -1,0 +1,4 @@
+#ignorar virtual enviroments
+env/
+env310/
+__pycache__/

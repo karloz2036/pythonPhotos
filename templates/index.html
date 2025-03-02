@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hola cara de bola</title>
+    <script>
+        
+        function takePhoto(){
+            document.getElementById('status').innerText = 'Processing...';
+
+            fetch("{{ url_for('video_feed') }}", {
+                method: 'POST'
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log("data:", data);
+                document.getElementById('status').innerText = '';
+                
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('status').innerText = 'An error occurred. Please try again.';
+            });
+        }
+        
+        function test(){
+            alert("hola mundo");
+        }
+
+        
+    </script>
+</head>
+<body>
+    <h1>Camera Stream</h1>
+    <button onclick="takePhoto()">Take Photo and Send Email</button>
+    <p id="status"></p> <!-- Status message element -->
+    <button onclick="test()">Test</button>
+</body>
+</html>
