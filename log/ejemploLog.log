@@ -95,3 +95,19 @@
 03/02/25 16:39:23 - INFO - Archivo creado:1639
 03/02/25 16:39:27 - INFO - correo enviado:1639
 03/02/25 16:39:27 - INFO - 127.0.0.1 - - [02/Mar/2025 16:39:27] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 07:58:25 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 07:58:25 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 07:58:25 - INFO -  * Restarting with stat
+03/03/25 07:58:26 - WARNING -  * Debugger is active!
+03/03/25 07:58:26 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 07:58:33 - INFO - 127.0.0.1 - - [03/Mar/2025 07:58:33] "GET / HTTP/1.1" 200 -
+03/03/25 07:58:33 - INFO - 127.0.0.1 - - [03/Mar/2025 07:58:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+03/03/25 07:58:44 - INFO - Archivo eliminado:0758
+03/03/25 07:58:44 - INFO - Archivo creado:0758
+03/03/25 07:58:48 - INFO - correo enviado:0758
+03/03/25 07:58:48 - INFO - 127.0.0.1 - - [03/Mar/2025 07:58:48] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 08:00:06 - INFO -  * Detected change in 'C:\\Users\\6130811\\OneDrive - Thomson Reuters Incorporated\\Documents\\CarlosChavez\\CursoPython\\Curso2\\Practicas\\giPythonPhotos\\pythonPhotos\\Script.py', reloading
+03/03/25 08:00:06 - INFO -  * Restarting with stat
+03/03/25 08:00:06 - WARNING -  * Debugger is active!
+03/03/25 08:00:06 - INFO -  * Debugger PIN: 114-447-824

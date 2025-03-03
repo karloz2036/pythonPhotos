@@ -22,20 +22,20 @@ def ImagenCorreo():
 
 
     #validar numero de camaras conectadas
-    # def list_cameras():
-    #     index = 0
-    #     arr = []
-    #     while True:
-    #         cap = cv2.VideoCapture(index)
-    #         if not cap.read()[0]:
-    #             break
-    #         else:
-    #             arr.append(index)
-    #         cap.release()
-    #         index += 1
-    #     return arr
+    def list_cameras():
+        index = 0
+        arr = []
+        while True:
+            cap = cv2.VideoCapture(index)
+            if not cap.read()[0]:
+                break
+            else:
+                arr.append(index)
+            cap.release()
+            index += 1
+        return arr
 
-    # print("list:", list_cameras())
+    print("camaras disponibles:", list_cameras())
 
 
     #SE OBTIENE LA MATRIZ DE LA IMAGEN 
