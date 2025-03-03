@@ -53,8 +53,8 @@ def ImagenCorreo():
         #print(check)
         #print(frame)
         if not esVideo:
-            print("No se pudo leer la imagen")
-            lg.escribirLogError("No se pudo leer la imagen:" + current_time)
+            print("No se pudo leer la imagen_")
+            lg.escribirLogError("No se pudo leer la imágen:" + current_time)
             break
         else:
             esVideo=True
