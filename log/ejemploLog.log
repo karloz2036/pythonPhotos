@@ -111,3 +111,117 @@
 03/03/25 08:00:06 - INFO -  * Restarting with stat
 03/03/25 08:00:06 - WARNING -  * Debugger is active!
 03/03/25 08:00:06 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 12:04:19 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 12:04:19 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 12:04:19 - INFO -  * Restarting with stat
+03/03/25 12:04:20 - WARNING -  * Debugger is active!
+03/03/25 12:04:20 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 12:04:27 - INFO - 127.0.0.1 - - [03/Mar/2025 12:04:27] "GET / HTTP/1.1" 200 -
+03/03/25 12:04:36 - INFO - Archivo eliminado:1204
+03/03/25 12:04:36 - INFO - Archivo creado:1204
+03/03/25 12:04:41 - INFO - correo enviado:1204
+03/03/25 12:04:41 - INFO - 127.0.0.1 - - [03/Mar/2025 12:04:41] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 16:20:06 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 16:20:06 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 16:20:06 - INFO -  * Restarting with stat
+03/03/25 16:20:06 - WARNING -  * Debugger is active!
+03/03/25 16:20:06 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 16:20:16 - INFO - 127.0.0.1 - - [03/Mar/2025 16:20:16] "GET / HTTP/1.1" 200 -
+03/03/25 16:20:29 - INFO - 127.0.0.1 - - [03/Mar/2025 16:20:29] "GET / HTTP/1.1" 200 -
+03/03/25 16:20:41 - INFO - Archivo eliminado:1620
+03/03/25 16:20:41 - INFO - Archivo creado:1620
+03/03/25 16:20:45 - INFO - correo enviado:1620
+03/03/25 16:20:45 - INFO - 127.0.0.1 - - [03/Mar/2025 16:20:45] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:20:08 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:20:08 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:20:08 - INFO -  * Restarting with stat
+03/03/25 17:20:08 - WARNING -  * Debugger is active!
+03/03/25 17:20:08 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 17:20:13 - INFO - 127.0.0.1 - - [03/Mar/2025 17:20:13] "GET / HTTP/1.1" 200 -
+03/03/25 17:20:23 - INFO - Archivo eliminado:1720
+03/03/25 17:20:23 - INFO - Archivo creado:1720
+03/03/25 17:20:29 - INFO - correo enviado:1720
+03/03/25 17:20:29 - INFO - 127.0.0.1 - - [03/Mar/2025 17:20:29] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:36:29 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:36:29 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:36:29 - INFO -  * Restarting with stat
+03/03/25 17:36:29 - WARNING -  * Debugger is active!
+03/03/25 17:36:29 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 17:36:33 - INFO - 127.0.0.1 - - [03/Mar/2025 17:36:33] "GET / HTTP/1.1" 200 -
+03/03/25 17:36:43 - INFO - Archivo eliminado:1736
+03/03/25 17:36:44 - INFO - Archivo creado:1736
+03/03/25 17:36:49 - INFO - correo enviado:1736
+03/03/25 17:36:49 - INFO - 127.0.0.1 - - [03/Mar/2025 17:36:49] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:38:42 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:38:42 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:38:42 - INFO -  * Restarting with stat
+03/03/25 17:38:42 - WARNING -  * Debugger is active!
+03/03/25 17:38:43 - INFO -  * Debugger PIN: 114-447-824
+03/03/25 17:39:25 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:39:25 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:39:43 - INFO - 127.0.0.1 - - [03/Mar/2025 17:39:43] "GET / HTTP/1.1" 200 -
+03/03/25 17:42:38 - INFO - Archivo eliminado:1740
+03/03/25 17:42:39 - INFO - Archivo creado:1740
+03/03/25 17:42:44 - INFO - correo enviado:1740
+03/03/25 17:42:44 - INFO - 127.0.0.1 - - [03/Mar/2025 17:42:44] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:43:15 - INFO - Archivo eliminado:1743
+03/03/25 17:43:15 - INFO - Archivo creado:1743
+03/03/25 17:43:36 - INFO - correo enviado:1743
+03/03/25 17:43:36 - INFO - 127.0.0.1 - - [03/Mar/2025 17:43:36] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:44:20 - INFO - Archivo eliminado:1743
+03/03/25 17:44:20 - INFO - Archivo creado:1743
+03/03/25 17:44:25 - INFO - correo enviado:1743
+03/03/25 17:44:25 - INFO - 127.0.0.1 - - [03/Mar/2025 17:44:25] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:45:47 - INFO - 127.0.0.1 - - [03/Mar/2025 17:45:47] "[35m[1mPOST /video_feed HTTP/1.1[0m" 500 -
+03/03/25 17:45:47 - ERROR - Error on request:
+Traceback (most recent call last):
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\flask\app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\flask\app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\env310\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\main.py", line 20, in TomarFoto
+    sc.ImagenCorreo()  # Call your function to take a photo and send an email
+  File "C:\Users\6130811\OneDrive - Thomson Reuters Incorporated\Documents\CarlosChavez\CursoPython\Curso2\Practicas\giPythonPhotos\pythonPhotos\Script.py", line 73, in ImagenCorreo
+    os.remove(file_path)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'arrayFile.txt'
+03/03/25 17:47:41 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:47:41 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:48:13 - INFO - Archivo eliminado:1748
+03/03/25 17:48:14 - INFO - Archivo creado:1748
+03/03/25 17:48:18 - INFO - correo enviado:1748
+03/03/25 17:48:18 - INFO - 127.0.0.1 - - [03/Mar/2025 17:48:18] "POST /video_feed HTTP/1.1" 200 -
+03/03/25 17:49:22 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:49:22 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:49:38 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+03/03/25 17:49:38 - INFO - [33mPress CTRL+C to quit[0m
+03/03/25 17:49:38 - INFO -  * Restarting with stat
+03/03/25 17:49:39 - WARNING -  * Debugger is active!
+03/03/25 17:49:39 - INFO -  * Debugger PIN: 114-447-824

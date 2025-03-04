@@ -20,23 +20,7 @@ def ImagenCorreo():
     #print("Current Date:", current_date)
     #print("Current Time:", current_time)
 
-
-    #validar numero de camaras conectadas
-    def list_cameras():
-        index = 0
-        arr = []
-        while True:
-            cap = cv2.VideoCapture(index)
-            if not cap.read()[0]:
-                break
-            else:
-                arr.append(index)
-            cap.release()
-            index += 1
-        return arr
-
     print("camaras disponibles:", list_cameras())
-
 
     #SE OBTIENE LA MATRIZ DE LA IMAGEN 
     VideoArray=[]
@@ -154,3 +138,17 @@ def ImagenCorreo():
         print("no se envio correo")
         lg.escribirLogError("no se envio correo:"+ current_time)
 
+
+#validar numero de camaras conectadas
+def list_cameras():
+    index = 0
+    arr = []
+    while True:
+        cap = cv2.VideoCapture(index)
+        if not cap.read()[0]:
+            break
+        else:
+            arr.append(index)
+        cap.release()
+        index += 1
+    return arr
