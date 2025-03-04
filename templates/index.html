@@ -5,30 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Page</title>
     <script>
-        
-        function takePhoto(){
-            document.getElementById('status').innerText = 'Processing...';
+        let videoStream;
 
-            fetch("{{ url_for('video_feed') }}", {
-                method: 'POST'
+        function startVideo() {
+            const video = document.getElementById('video');
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                    videoStream = stream; // Store the stream to stop it later
+                })
+                .catch(error => {
+                    console.error('Error accessing the camera:', error);
+                });
+        }
+
+        function stopVideo() {
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+            }
+        }
+
+        function takePhoto() {
+            const video = document.getElementById('video');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL('image/jpeg');
+
+            document.getElementById('status').innerText = 'Processing...';
+            stopVideo(); // Stop the video stream after taking the photo
+
+            fetch('/video_feed', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ image: dataUrl })
             })
             .then(response => response.text())
             .then(data => {
                 console.log("data:", data);
-                document.getElementById('status').innerText = '';
-                
+                document.getElementById('status').innerText = 'procesando';
             })
             .catch(error => {
                 console.error('Error:', error);
                 document.getElementById('status').innerText = 'An error occurred. Please try again.';
             });
         }
-        
-        function test(){
-            alert("hola mundo");
-        }
-
-        
     </script>
     <style>
         body {
@@ -60,22 +85,24 @@
             border: none;
             cursor: pointer;
         }
-        
         button:hover {
             background-color: #45a049;
         }
+
+        #video {
+            display: none; 
+        }
     </style>
 </head>
-<body>
+<body onload="startVideo()">
     <header>
         <h2>Header Section</h2>
     </header>
     <h1>Test Title</h1>
     <div class="button-container">
-        <button onclick="alert('Button clicked!')">Click Me</button>
+        <video id="video" autoplay></video>
         <button onclick="takePhoto()">Take Photo and Send Email</button>
         <p id="status"></p> <!-- Status message element -->
-        <button onclick="test()">Test</button>
     </div>
 </body>
 </html>
