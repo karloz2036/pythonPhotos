@@ -7,53 +7,90 @@
     <script>
         let videoStream;
 
-        function startVideo() {
+        async function startVideo() {
             const video = document.getElementById('video');
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(stream => {
                     video.srcObject = stream;
                     videoStream = stream; // Store the stream to stop it later
+                    console.log("camara encendida")
                 })
                 .catch(error => {
                     console.error('Error accessing the camera:', error);
                 });
         }
 
-        function stopVideo() {
+        async function stopVideo() {
             if (videoStream) {
                 videoStream.getTracks().forEach(track => track.stop());
+                console.log("camara detenida")
+            } else {
+                console.error("camara no detenida")
             }
         }
 
-        function takePhoto() {
+        async function takePhoto() {
+            //startVideo()
             const video = document.getElementById('video');
             const canvas = document.createElement('canvas');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             const context = canvas.getContext('2d');
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const dataUrl = canvas.toDataURL('image/jpeg');
+            const dataUrl = canvas.toDataURL('sendImage/jpeg');
 
-            document.getElementById('status').innerText = 'Processing...';
+
             stopVideo(); // Stop the video stream after taking the photo
+
 
             fetch('/video_feed', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ image: dataUrl })
+                body: JSON.stringify({ sendImage: dataUrl })
             })
             .then(response => response.text())
             .then(data => {
-                console.log("data:", data);
-                document.getElementById('status').innerText = 'procesando';
+                console.log("data fetch:", data);
+                
+                let imageTaken = document.getElementById('imageTaken');
+                imageTaken.src = dataUrl;
+                handleImage(1);
+                document.getElementById('status').innerText = '';
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error fetch:', error);
                 document.getElementById('status').innerText = 'An error occurred. Please try again.';
             });
         }
+
+        function handleImage(opc){
+            let imageTaken = document.getElementById('imageTaken');
+            let greeting = document.getElementById('greeting');
+            if(opc == 1){
+                imageTaken.style.display = 'block'
+                greeting.style.display = 'block'
+            }
+            else {
+                imageTaken.style.display = 'none'
+                greeting.style.display = 'none'
+            } 
+                
+        }
+
+        async function startVideoAndTakePhoto() {
+            const btnTakePhoto = document.getElementById('btnTakePhoto');
+            btnTakePhoto.disabled = true;
+            document.getElementById('status').innerText = 'Chambeando, espera...';
+            handleImage(0);
+            await startVideo();
+            setTimeout(async () => {
+                await takePhoto();
+            }, 2000); 
+            btnTakePhoto.disabled = false;
+        }
+
     </script>
     <style>
         body {
@@ -63,10 +100,11 @@
             background-color: #f0f0f0;
         }
         header {
-            background-color: #4CAF50;
+            background-color: #1d23e3;
             color: white;
             padding: 10px 0;
             text-align: center;
+            font-size: 25px;
         }
         h1 {
             color: #333;
@@ -79,30 +117,47 @@
         }
         button {
             padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
+            font-size: 36px;
+            background-color: #515253;
             color: white;
             border: none;
             cursor: pointer;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #171718;
         }
 
         #video {
             display: none; 
         }
+
+        .center-container {
+            text-align: center;
+            height: 50vh; /* Adjust as needed */
+            border: 0px solid #ccc; /* Optional, for visual reference */
+        }
+        #imageTaken {
+            width: 320px;
+            height: 240px;
+            margin: auto;
+        }
     </style>
 </head>
-<body onload="startVideo()">
+<!-- <body onload="startVideo()"> -->
+<body>
     <header>
-        <h2>Header Section</h2>
+        <h2>Probando Python</h2>
     </header>
-    <h1>Test Title</h1>
-    <div class="button-container">
+    <h1>Hola {{hostname}}</h1>
+    <div class="button-container" >
         <video id="video" autoplay></video>
-        <button onclick="takePhoto()">Take Photo and Send Email</button>
+        <br>
+        <button id="btnTakePhoto" onclick="startVideoAndTakePhoto()">Presioname</button>
         <p id="status"></p> <!-- Status message element -->
+        <div class="center-container">
+            <img id="imageTaken" style="display: none;">
+            <h2 id="greeting" style="color: red; display: none;">You look amazing!!</h2>
+        </div>
     </div>
 </body>
 </html>
