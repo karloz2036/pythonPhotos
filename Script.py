@@ -9,9 +9,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.text import MIMEText  
+import shutil
 
 
-def ImagenCorreo(foto):
+def ImagenCorreo(foto, rutaArchivoTxt, nombreArchivoTxt):
     print("ejecutando...")
     now = datetime.now()
     current_time = now.strftime("%H%M")
@@ -68,14 +69,17 @@ def ImagenCorreo(foto):
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
-        #Attach the zip file
-        filename = 'arrayFile.txt'
-        attachment = open(filename, 'rb')
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload(attachment.read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition', f'attachment; filename={filename}')
-        msg.attach(part)
+        print("nombreCortoTxt", nombreArchivoTxt)
+        listFilesAttach = [rutaArchivoTxt, 'arrayFile.txt']
+        for fileAtt in listFilesAttach:
+            #Attach the zip file
+            filename = fileAtt
+            attachment = open(filename, 'rb')
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload(attachment.read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition', f'attachment; filename={filename}')
+            msg.attach(part)
 
         # Send the email
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -86,6 +90,8 @@ def ImagenCorreo(foto):
 
         print("correo enviado")
         lg.escribirLog("correo enviado:"+ current_time)
+
     except Exception as e:
         print("error al enviar correo: ", e)
         lg.escribirLogError("error al enviar correo: ", e)
+

