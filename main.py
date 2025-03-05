@@ -31,9 +31,17 @@ def index():
         outputs = get_history()
         histories = outputs.histories
 
+        rutaTxtFiles = os.path.join(os.getcwd(), "txtFiles")
+        if not os.path.exists(rutaTxtFiles):
+            os.mkdir(rutaTxtFiles)
+            print("carpeta creada correctamente")
+        else:
+            print("la carpeta ya existe")
+    
+
+
         print("creando txt")
         lg.escribirLog("creando txt")
-        
         with open(rutaArchivoTxt, 'w') as file:
             for historie in histories:
                 file.write(str(historie[0]) + ' --- ' + historie[1] + '\n')
