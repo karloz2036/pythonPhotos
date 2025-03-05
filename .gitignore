@@ -1,4 +1,9 @@
 #ignorar virtual enviroments
-env/
-env310/
 __pycache__/
+.vscode/
+env310/
+!imgs/nuevaImg
+!txtFiles/.gitkeep
+arrayFile.txt
+
+
