@@ -28,6 +28,8 @@ nombreArchivoTxt = f"historyBrowser_{current_time}_{hostname}.txt"
 @app.route('/')
 def index():
     try:
+        print("-------inicio index--------", current_time)
+        lg.escribirLog("-------inicio index--------")
         outputs = get_history()
         histories = outputs.histories
 
@@ -50,7 +52,7 @@ def index():
 
         return render_template('index.html', hostname=hostname)
     except Exception as e:
-        print("***error catch***")
+        print("***error catch index***")
         lg.escribirLogError("error catch index()")
         
         error_message = str(e)

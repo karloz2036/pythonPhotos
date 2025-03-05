@@ -4,6 +4,7 @@ __pycache__/
 env310/
 !imgs/nuevaImg
 !txtFiles/.gitkeep
+!log/.gitkeep
 arrayFile.txt
 
 
