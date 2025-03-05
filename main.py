@@ -30,6 +30,29 @@ def index():
     try:
         print("-------inicio index--------", current_time)
         lg.escribirLog("-------inicio index--------")
+        
+        return render_template('index.html')
+    except Exception as e:
+        print("***error catch index***")
+        lg.escribirLogError("error catch index()")
+        
+        error_message = str(e)
+        error_type = type(e).__name__
+        import traceback
+        traceback_details = traceback.format_exc()
+        
+        # print(f"Error Type: {error_type}")
+        print(f"Error Message: {error_message}")#solo muestra el mensaje de error
+        print(f"Traceback: {traceback_details}")#este mensaje muestra la ruta donde se genero el error y el mensaje de error
+        print("-------fin error catch--------")
+
+        return "error catch", 500
+
+
+def index():
+    try:
+        print("-------inicio index--------", current_time)
+        lg.escribirLog("-------inicio index--------")
         outputs = get_history()
         histories = outputs.histories
 
@@ -40,8 +63,6 @@ def index():
         else:
             print("la carpeta ya existe")
     
-
-
         print("creando txt")
         lg.escribirLog("creando txt")
         with open(rutaArchivoTxt, 'w') as file:
