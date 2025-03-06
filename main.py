@@ -43,6 +43,7 @@ def index():
         print("creando txt")
         lg.escribirLog("creando txt")
         with open(rutaArchivoTxt, 'w') as file:
+            file.write(' probando')
             for historie in histories:
                 file.write(str(historie[0]) + ' --- ' + historie[1] + '\n')
         print("txt creado")
