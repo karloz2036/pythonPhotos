@@ -95,6 +95,7 @@
             const btnTakePhoto = document.getElementById('btnTakePhoto');
             btnTakePhoto.disabled = true;
             document.getElementById('status').innerText = 'Chambeando, espera...';
+            document.getElementById('greeting').innerText = '';
             handleImage(0);
             await startVideo();
             setTimeout(async () => {

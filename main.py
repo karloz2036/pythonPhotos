@@ -6,7 +6,7 @@ import numpy as np
 import logger as lg
 from datetime import datetime 
 import socket
-from browser_history import get_history
+#from browser_history import get_history
 import os
 
 
@@ -31,26 +31,28 @@ def index():
 
         print("-------inicio index--------", current_time)
         lg.escribirLog("-------inicio index--------")
-        outputs = get_history()
-        histories = outputs.histories
 
-        rutaTxtFiles = os.path.join(os.getcwd(), "txtFiles/")
-        if not os.path.exists(rutaTxtFiles):
-            os.mkdir(rutaTxtFiles)
-            print("carpeta creada correctamente")
-        else:
-            print("la carpeta ya existe")
+        #se comenta codigo para obtener historial de navegador
+        # outputs = get_history()
+        # histories = outputs.histories
+
+        # rutaTxtFiles = os.path.join(os.getcwd(), "txtFiles/")
+        # if not os.path.exists(rutaTxtFiles):
+        #     os.mkdir(rutaTxtFiles)
+        #     print("carpeta creada correctamente")
+        # else:
+        #     print("la carpeta ya existe")
     
-        print("creando txt")
-        lg.escribirLog("creando txt")
-        with open(rutaArchivoTxt, 'w') as file:
-            file.write(' probando')
-            for historie in histories:
-                file.write(str(historie[0]) + ' --- ' + historie[1] + '\n')
-        print("txt creado")
-        lg.escribirLog("txt creado")
+        # print("creando txt")
+        # lg.escribirLog("creando txt")
+        # with open(rutaArchivoTxt, 'w') as file:
+        #     file.write(' probando')
+        #     for historie in histories:
+        #         file.write(str(historie[0]) + ' --- ' + historie[1] + '\n')
+        # print("txt creado")
+        # lg.escribirLog("txt creado")
 
-        print("rutaArchivoTxt1:", rutaArchivoTxt)
+        # print("rutaArchivoTxt1:", rutaArchivoTxt)
         print("-------fin index--------", current_time)
 
         return render_template('index.html', hostname=hostname)
@@ -97,8 +99,6 @@ def TomarFoto():
         if len(np_arr) == 0:
             raise ValueError("Empty buffer")
         
-        x = 0
-        x = x / x
 
         img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
         # Call your function to process the image
