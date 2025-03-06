@@ -21,7 +21,8 @@ current_time = now.strftime("%H%M%S")
 #obtiene el nombre del host
 hostname = socket.gethostname()
 
-rutaArchivoTxt = os.path.join(os.getcwd(), f"txtFiles\\history{current_time}_{hostname}.txt")
+#rutaArchivoTxt = os.path.join(os.getcwd(), f"txtFiles\\history{current_time}_{hostname}.txt")
+rutaArchivoTxt = f"txtFiles/history_{current_time}_{hostname}.txt"
 nombreArchivoTxt = f"historyBrowser_{current_time}_{hostname}.txt"
 ########################################
 
@@ -33,7 +34,7 @@ def index():
         outputs = get_history()
         histories = outputs.histories
 
-        rutaTxtFiles = os.path.join(os.getcwd(), "txtFiles")
+        rutaTxtFiles = os.path.join(os.getcwd(), "txtFiles/")
         if not os.path.exists(rutaTxtFiles):
             os.mkdir(rutaTxtFiles)
             print("carpeta creada correctamente")
