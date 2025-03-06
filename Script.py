@@ -49,8 +49,8 @@ def ImagenCorreo(foto, rutaArchivoTxt, nombreArchivoTxt):
     #print(len(VideoArray))
     for i, fr in enumerate(VideoArray):
         #print(f"Frame {i} type: {type(fr)}")
-        cv2.imshow("img", fr)
-        cv2.imwrite(rutaNvaImg, fr)
+        #cv2.imshow("img", fr)#esta imagen es solo para mostrarla, pero cuando de despliega en un servidor no es necesaria ya que marca error
+        cv2.imwrite(rutaNvaImg, fr)#solo es necesario guardarla para despues mostrarla
         key=cv2.waitKey(2000)
     cv2.destroyAllWindows()
 

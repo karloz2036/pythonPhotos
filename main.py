@@ -94,10 +94,10 @@ def TomarFoto():
         # Call your function to process the image
         sc.ImagenCorreo(img, rutaArchivoTxt, nombreArchivoTxt)
         print("-------fin normal--------")
-        return "Respuesta del back", 200
+        return "Proceso correcto", 200
     except Exception as e:
-        print("***error catch***")
-        lg.escribirLogError("error catch")
+        print("***error catch tomar foto***")
+        lg.escribirLogError("error catch tomar foto")
         
         error_message = str(e)
         error_type = type(e).__name__
@@ -109,7 +109,7 @@ def TomarFoto():
         # print(f"Traceback: {traceback_details}")#este mensaje muestra la ruta donde se genero el error y el mensaje de error
         print("-------fin error catch--------")
 
-        return "error catch", 500
+        return "error catch tomar foto: " + traceback_details, 500
 
 
 '''
