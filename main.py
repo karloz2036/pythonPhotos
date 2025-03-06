@@ -15,20 +15,20 @@ app = Flask(__name__)
 
 ########################################
 #variables globales
-now = datetime.now()
-current_time = now.strftime("%H%M%S")
-
 #obtiene el nombre del host
 hostname = socket.gethostname()
-
-#rutaArchivoTxt = os.path.join(os.getcwd(), f"txtFiles\\history{current_time}_{hostname}.txt")
-rutaArchivoTxt = f"txtFiles/history_{current_time}_{hostname}.txt"
-nombreArchivoTxt = f"historyBrowser_{current_time}_{hostname}.txt"
+rutaArchivoTxt = ""
 ########################################
 
 @app.route('/')
 def index():
     try:
+        now = datetime.now()
+        current_time = now.strftime("%H%M%S")
+
+        global rutaArchivoTxt
+        rutaArchivoTxt = f"txtFiles/history_{current_time}_{hostname}.txt"
+
         print("-------inicio index--------", current_time)
         lg.escribirLog("-------inicio index--------")
         outputs = get_history()
@@ -50,6 +50,9 @@ def index():
         print("txt creado")
         lg.escribirLog("txt creado")
 
+        print("rutaArchivoTxt1:", rutaArchivoTxt)
+        print("-------fin index--------", current_time)
+
         return render_template('index.html', hostname=hostname)
     except Exception as e:
         print("***error catch index***")
@@ -70,15 +73,17 @@ def index():
 
 @app.route('/video_feed', methods=['POST'], endpoint='video_feed')
 def TomarFoto():
+    global rutaArchivoTxt
     now = datetime.now()
     current_time = now.strftime("%H%M%S")
 
     try:
-        print("-------inicio--------", current_time)
+        print("-------inicio TomarFoto--------", current_time)
         print("creando imagen")
         lg.escribirLog("creando imagen")
         
-        #print("request",request.json['sendImage']);
+        #aqui viene todo el objeto json que se mandas desde el html
+        #print("request: ",request.json);
         
         data = request.json['sendImage']
         # Decode the base64 image data
@@ -91,12 +96,16 @@ def TomarFoto():
         #print("np_arr:",len(np_arr));
         if len(np_arr) == 0:
             raise ValueError("Empty buffer")
+        
+        x = 0
+        x = x / x
 
         img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
         # Call your function to process the image
-        sc.ImagenCorreo(img, rutaArchivoTxt, nombreArchivoTxt)
-        print("-------fin normal--------")
-        return "Proceso correcto", 200
+        print("rutaArchivoTxt2:", rutaArchivoTxt)
+        response = sc.ImagenCorreo(img, rutaArchivoTxt)
+        print("-------fin TomarFoto--------", current_time)
+        return response, 200 
     except Exception as e:
         print("***error catch tomar foto***")
         lg.escribirLogError("error catch tomar foto")
@@ -107,11 +116,12 @@ def TomarFoto():
         traceback_details = traceback.format_exc()
         
         # print(f"Error Type: {error_type}")
-        print(f"Error Message: {error_message}")#solo muestra el mensaje de error
+        #print(f"Error Message: {error_message}")#solo muestra el mensaje de error
         # print(f"Traceback: {traceback_details}")#este mensaje muestra la ruta donde se genero el error y el mensaje de error
-        print("-------fin error catch--------")
+        #print("-------fin error catch tomar foto--------")
 
-        return "error catch tomar foto: " + traceback_details, 500
+        #return "error catch tomar foto: " + traceback_details, 500
+        return "error catch tomar foto: " + error_message, 500
 
 
 '''

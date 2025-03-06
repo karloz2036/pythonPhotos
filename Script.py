@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 import shutil
 
 
-def ImagenCorreo(foto, rutaArchivoTxt, nombreArchivoTxt):
+def ImagenCorreo(foto, rutaArchivoTxt):
     print("ejecutando...")
     now = datetime.now()
     current_time = now.strftime("%H%M")
@@ -69,8 +69,8 @@ def ImagenCorreo(foto, rutaArchivoTxt, nombreArchivoTxt):
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
-        print("nombreCortoTxt", nombreArchivoTxt)
         listFilesAttach = [rutaArchivoTxt, 'arrayFile.txt']
+        print("lista:",listFilesAttach)
         for fileAtt in listFilesAttach:
             #Attach the zip file
             filename = fileAtt
@@ -90,8 +90,18 @@ def ImagenCorreo(foto, rutaArchivoTxt, nombreArchivoTxt):
 
         print("correo enviado")
         lg.escribirLog("correo enviado:"+ current_time)
+    
+        return "ok"
 
     except Exception as e:
         print("error al enviar correo: ", e)
-        lg.escribirLogError("error al enviar correo: ", e)
+
+        import traceback
+        traceback_details = traceback.format_exc()
+
+        error_message = str(e)
+
+        #return "error correo: " + traceback_details
+        return "error correo: " + error_message
+    
 

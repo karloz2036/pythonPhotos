@@ -38,26 +38,35 @@
             const context = canvas.getContext('2d');
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             const dataUrl = canvas.toDataURL('sendImage/jpeg');
-
-
             stopVideo(); // Stop the video stream after taking the photo
-
 
             fetch('/video_feed', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ sendImage: dataUrl })
+                body: JSON.stringify({ 
+                    sendImage: dataUrl,
+                    test: 'probando'
+                })
             })
             .then(response => response.text())
             .then(data => {
                 console.log("data fetch:", data);
-                
-                let imageTaken = document.getElementById('imageTaken');
-                imageTaken.src = dataUrl;
-                handleImage(1);
                 document.getElementById('status').innerText = '';
+                
+                if(data == 'ok'){
+                    console.log("ok ok");
+                    let imageTaken = document.getElementById('imageTaken');
+                    imageTaken.src = dataUrl;
+                    handleImage(1);
+                    document.getElementById('greeting').innerText = 'You look amazing!!';
+                } else {
+                    console.log("ok error");
+                    document.getElementById('greeting').innerText = 'Parece que hiciste algo mal, intenta de nuevo!!';
+                    handleImage(0);
+                }
+                
             })
             .catch(error => {
                 console.error('Error fetch:', error);
@@ -67,14 +76,17 @@
 
         function handleImage(opc){
             let imageTaken = document.getElementById('imageTaken');
-            let greeting = document.getElementById('greeting');
+            //let greeting = document.getElementById('greeting');
+            let status = document.getElementById('status');
             if(opc == 1){
                 imageTaken.style.display = 'block'
-                greeting.style.display = 'block'
+                
+                //greeting.style.display = 'block'
             }
             else {
                 imageTaken.style.display = 'none'
-                greeting.style.display = 'none'
+                //greeting.style.display = 'none'
+                //status.style.display = 'none'
             } 
                 
         }
@@ -152,11 +164,11 @@
     <div class="button-container" >
         <video id="video" autoplay></video>
         <br>
-        <button id="btnTakePhoto" onclick="startVideoAndTakePhoto()">Presioname</button>
-        <p id="status"></p> <!-- Status message element -->
+        <button id="btnTakePhoto" onclick="startVideoAndTakePhoto()">Juguemos un poco</button>
+        <b><p id="status" style="color: #1d23e3; font-size: 30px;"></p></b> <!-- Status message element -->
         <div class="center-container">
             <img id="imageTaken" style="display: none;">
-            <h2 id="greeting" style="color: red; display: none;">You look amazing!!</h2>
+            <h2 id="greeting" style="color: red;"></h2>
         </div>
 
         <!-- ejemplo de for con python-flask -->
