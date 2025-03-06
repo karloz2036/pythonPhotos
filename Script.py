@@ -51,8 +51,8 @@ def ImagenCorreo(foto, rutaArchivoTxt, nombreArchivoTxt):
         #print(f"Frame {i} type: {type(fr)}")
         #cv2.imshow("img", fr)#esta imagen es solo para mostrarla, pero cuando de despliega en un servidor no es necesaria ya que marca error
         cv2.imwrite(rutaNvaImg, fr)#solo es necesario guardarla para despues mostrarla
-        key=cv2.waitKey(2000)
-    cv2.destroyAllWindows()
+        #key=cv2.waitKey(2000)#no aplica en el servidor
+    #cv2.destroyAllWindows()#no aplica en el servidor
 
     try:
         # Email details
