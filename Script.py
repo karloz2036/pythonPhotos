@@ -71,14 +71,13 @@ def ImagenCorreo(foto, ip):
 
         listFilesAttach = ["imgs/nuevaImg.jpg", 'arrayFile.txt', "txtFiles/JsonLocation.txt"]
         for item in listFilesAttach:
-            nombre = item.split("/")[0] if len(item.split("/")) == 1 else item.split("/")[1]
-            #print("nombre", nombre)
-            filename = nombre
+            filename = item
             attachment = open(filename, 'rb')
             part = MIMEBase('application', 'octet-stream')
             part.set_payload(attachment.read())
             encoders.encode_base64(part)
-            part.add_header('Content-Disposition', f'attachment; filename={filename}')
+            file_basename = os.path.basename(filename)
+            part.add_header('Content-Disposition', f'attachment; filename={file_basename}')
             msg.attach(part)
 
         # Send the email
