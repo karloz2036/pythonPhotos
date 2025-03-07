@@ -69,7 +69,7 @@ def ImagenCorreo(foto, ip):
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
-        listFilesAttach = ["imgs\\nuevaImg.jpg", 'arrayFile.txt']
+        listFilesAttach = ["imgs\\nuevaImg.jpg", 'arrayFile.txt', "txtFiles/JsonLocation.txt"]
         for item in listFilesAttach:
             #Attach the zip file
             filename = item

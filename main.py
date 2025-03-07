@@ -8,6 +8,8 @@ from datetime import datetime
 import socket
 #from browser_history import get_history
 import os
+import requests
+import json
 
 
 
@@ -86,6 +88,31 @@ def getHostName():
         hostname = "Unknown Host"
     return jsonify({'hostname': hostname})
 
+@app.route('/get_location')
+def getHostLocation():
+    try:
+        global ip
+        ip = request.args.get('ip')
+        #print("location ip:",ip)
+        access_token = 'b4dd985c047402'
+
+        url = f'https://ipinfo.io/{ip}/json?token={access_token}'
+        #print(url)
+
+        response = requests.get(url)
+        data = response.json()
+
+        rutaArchivoJson = "txtFiles/JsonLocation.txt"
+        with open(rutaArchivoJson, 'w') as file:
+            json.dump(data, file, indent=4)
+
+        print("json creado")
+        return data
+    except Exception as e:
+        error_message = str(e)
+        return jsonify({'error location': error_message}), 500
+
+
 @app.route('/video_feed', methods=['POST'], endpoint='video_feed')
 def TomarFoto():
     global rutaArchivoTxt
@@ -128,6 +155,7 @@ def TomarFoto():
         error_type = type(e).__name__
         import traceback
         traceback_details = traceback.format_exc()
+        print(traceback_details)
         
         # print(f"Error Type: {error_type}")
         #print(f"Error Message: {error_message}")#solo muestra el mensaje de error

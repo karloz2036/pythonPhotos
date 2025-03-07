@@ -105,6 +105,7 @@
         }
 
         async function getHostName(){
+            //api para obtener la ip del host que ejecuta el codigo
             fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
@@ -122,6 +123,23 @@
                     });
             });
         }
+
+        async function getHostLocation(){
+            //api para obtener la ip del host que ejecuta el codigo
+            fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                fetch(`/get_location?ip=${ip}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        //console.log("response location:",data)
+                    });
+            });
+        }
+            
+
+    
     </script>
     <style>
         body {
@@ -174,7 +192,8 @@
         }
     </style>
 </head>
-<body onload="getHostName()">
+<!-- <body onload="getHostName()"> -->
+<body onload="getHostLocation()"></body>
 <!-- <body> -->
     <header>
         <h2>Probando Python</h2>
