@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 import shutil
 
 
-def ImagenCorreo(foto):
+def ImagenCorreo(foto, ip):
     print("ejecutando...")
     now = datetime.now()
     current_time = now.strftime("%H%M")
@@ -58,7 +58,7 @@ def ImagenCorreo(foto):
         # Email details
         sender_email = 'karloz2036cursos@gmail.com'
         receiver_email = 'karloz2036@gmail.com'
-        subject = 'Correo Python:' + current_time
+        subject = 'Correo Python ' + ip + " " + current_time
         body = "FYI"
         password = 'plbw wdeq bspj kpqg'
 

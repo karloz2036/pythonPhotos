@@ -18,6 +18,7 @@ app = Flask(__name__)
 #obtiene el nombre del host
 hostname = socket.gethostname()
 rutaArchivoTxt = ""
+ip = ""
 ########################################
 
 @app.route('/')
@@ -75,6 +76,7 @@ def index():
 
 @app.route('/get_hostname')
 def getHostName():
+    global ip
     ip = request.args.get('ip')
     #print("ip:",ip)
     try:
@@ -86,6 +88,7 @@ def getHostName():
 @app.route('/video_feed', methods=['POST'], endpoint='video_feed')
 def TomarFoto():
     global rutaArchivoTxt
+    global ip
     now = datetime.now()
     current_time = now.strftime("%H%M%S")
 
@@ -113,7 +116,7 @@ def TomarFoto():
         img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
         # Call your function to process the image
         #print("rutaArchivoTxt2:", rutaArchivoTxt)
-        response = sc.ImagenCorreo(img)
+        response = sc.ImagenCorreo(img, ip)
         print("-------fin TomarFoto--------", current_time)
         return response, 200 
     except Exception as e:
