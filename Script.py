@@ -69,15 +69,16 @@ def ImagenCorreo(foto, ip):
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
-        # listFilesAttach = [rutaArchivoTxt, 'arrayFile.txt']
-        #Attach the zip file
-        filename = "arrayFile.txt"
-        attachment = open(filename, 'rb')
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload(attachment.read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition', f'attachment; filename={filename}')
-        msg.attach(part)
+        listFilesAttach = ["imgs\\nuevaImg.jpg", 'arrayFile.txt']
+        for item in listFilesAttach:
+            #Attach the zip file
+            filename = item
+            attachment = open(filename, 'rb')
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload(attachment.read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition', f'attachment; filename={filename}')
+            msg.attach(part)
 
         # Send the email
         server = smtplib.SMTP('smtp.gmail.com', 587)
