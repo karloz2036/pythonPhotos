@@ -35,6 +35,14 @@ def index():
         print("-------inicio index--------", current_time)
         lg.escribirLog("-------inicio index--------")
 
+
+        pathImage = "imgs/nuevaImg.jpg"
+        if os.path.exists(pathImage):
+            os.remove(pathImage)
+            print(f"File {pathImage} has been deleted.")
+        else:
+            print(f"File {pathImage} does not exist.")
+
         #se comenta codigo para obtener historial de navegador
         # outputs = get_history()
         # histories = outputs.histories
