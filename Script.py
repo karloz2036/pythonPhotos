@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 import shutil
 
 
-def ImagenCorreo(foto, rutaArchivoTxt):
+def ImagenCorreo(foto):
     print("ejecutando...")
     now = datetime.now()
     current_time = now.strftime("%H%M")
@@ -69,17 +69,15 @@ def ImagenCorreo(foto, rutaArchivoTxt):
         msg['Subject'] = subject
         msg.attach(MIMEText(body, 'plain'))
 
-        listFilesAttach = [rutaArchivoTxt, 'arrayFile.txt']
-        print("lista:",listFilesAttach)
-        for fileAtt in listFilesAttach:
-            #Attach the zip file
-            filename = fileAtt
-            attachment = open(filename, 'rb')
-            part = MIMEBase('application', 'octet-stream')
-            part.set_payload(attachment.read())
-            encoders.encode_base64(part)
-            part.add_header('Content-Disposition', f'attachment; filename={filename}')
-            msg.attach(part)
+        # listFilesAttach = [rutaArchivoTxt, 'arrayFile.txt']
+        #Attach the zip file
+        filename = "arrayFile.txt"
+        attachment = open(filename, 'rb')
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload(attachment.read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition', f'attachment; filename={filename}')
+        msg.attach(part)
 
         # Send the email
         server = smtplib.SMTP('smtp.gmail.com', 587)

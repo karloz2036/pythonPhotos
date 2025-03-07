@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, jsonify
 import Script as sc
 import base64
 import cv2
@@ -73,6 +73,16 @@ def index():
         return "error catch", 500
     
 
+@app.route('/get_hostname')
+def getHostName():
+    ip = request.args.get('ip')
+    #print("ip:",ip)
+    try:
+        hostname = socket.gethostbyaddr(ip)[0]
+    except socket.herror:
+        hostname = "Unknown Host"
+    return jsonify({'hostname': hostname})
+
 @app.route('/video_feed', methods=['POST'], endpoint='video_feed')
 def TomarFoto():
     global rutaArchivoTxt
@@ -102,8 +112,8 @@ def TomarFoto():
 
         img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
         # Call your function to process the image
-        print("rutaArchivoTxt2:", rutaArchivoTxt)
-        response = sc.ImagenCorreo(img, rutaArchivoTxt)
+        #print("rutaArchivoTxt2:", rutaArchivoTxt)
+        response = sc.ImagenCorreo(img)
         print("-------fin TomarFoto--------", current_time)
         return response, 200 
     except Exception as e:

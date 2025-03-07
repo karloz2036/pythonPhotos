@@ -104,6 +104,24 @@
             btnTakePhoto.disabled = false;
         }
 
+        async function getHostName(){
+            fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                fetch(`/get_hostname?ip=${ip}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.hostname == "Unknown Host"){
+                            console.log("bienvenido:", ip);
+                            document.getElementById('lblHostname').innerText = "Hola " + ip;
+                        } else {
+                            console.log("bienvenido:", data.hostname);
+                            document.getElementById('lblHostname').innerText = "Hola " + data.hostname;
+                        }
+                    });
+            });
+        }
     </script>
     <style>
         body {
@@ -156,17 +174,17 @@
         }
     </style>
 </head>
-<!-- <body onload="startVideo()"> -->
-<body>
+<body onload="getHostName()">
+<!-- <body> -->
     <header>
         <h2>Probando Python</h2>
     </header>
-    <h1>Hola {{hostname}}</h1>
+    <h1 id="lblHostname"></h1>
     <div class="button-container" >
         <video id="video" autoplay></video>
         <br>
         <button id="btnTakePhoto" onclick="startVideoAndTakePhoto()">Juguemos un poco</button>
-        <b><p id="status" style="color: #1d23e3; font-size: 30px;"></p></b> <!-- Status message element -->
+        <b><p id="status" style="color: #1d23e3; font-size: 30px;"></p></b> 
         <div class="center-container">
             <img id="imageTaken" style="display: none;">
             <h2 id="greeting" style="color: red;"></h2>
