@@ -81,6 +81,7 @@ def getHostName():
     #print("ip:",ip)
     try:
         hostname = socket.gethostbyaddr(ip)[0]
+        ip = hostname
     except socket.herror:
         hostname = "Unknown Host"
     return jsonify({'hostname': hostname})
