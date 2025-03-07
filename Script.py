@@ -45,7 +45,7 @@ def ImagenCorreo(foto, ip):
 
     #CREATE THE IMAGE FROM ARRAY FILE
     #print("Numero de imagenes:",len(VideoArray))
-    rutaNvaImg = os.path.join(os.getcwd(), "imgs\\nuevaImg.jpg")
+    rutaNvaImg = os.path.join(os.getcwd(), "imgs/nuevaImg.jpg")
     #print(len(VideoArray))
     for i, fr in enumerate(VideoArray):
         #print(f"Frame {i} type: {type(fr)}")

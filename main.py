@@ -35,8 +35,8 @@ def index():
         print("-------inicio index--------", current_time)
         lg.escribirLog("-------inicio index--------")
 
-
-        pathImage = "imgs/nuevaImg.jpg"
+        #Se eliminan las imagenes de la carpeta imgs
+        pathImage = "imgs/nuevaImg.jpg" 
         if os.path.exists(pathImage):
             os.remove(pathImage)
             print(f"File {pathImage} has been deleted.")
@@ -99,6 +99,7 @@ def getHostName():
 @app.route('/get_location')
 def getHostLocation():
     try:
+        #ulr https://ipinfo.io/account/home
         global ip
         ip = request.args.get('ip')
         #print("location ip:",ip)
